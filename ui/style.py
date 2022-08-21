@@ -17,10 +17,10 @@ def QButton(text, style):
     return b
 
 
-Templates = {"window": "*{background:rgb(20,20,33);font-family:consolas;border-radius:7px;}",
+Templates = {"window": "*{background:rgb(10,10,13);font-family:consolas;border-radius:7px;}",
              "label": "*{color:rgb(72,130,46);border-radius:7px;}*:hover{color:rgb(102,130,76);}",
              "select": "*{color:rgb(252,216,199);}",
-             "button": "*{color:rgb(124,106,54);background:rgb(20,20,20);}"
-                       "*:hover{border:1px solid rgb(89,138,67);background:rgb(10,10,10);}",
+             "button": "*{color:rgb(250,230,230);background:rgb(20,20,20);}"
+                       "*:hover{border:1px solid rgb(124,106,54);background:rgb(10,10,10);color:rgb(124,106,54)}",
              "start": "*{background:rgb(30,30,30);color:rgb(149,113,16);border-radius:7px;}"
                       "*:hover{background:rgb(0,0,0);}"}
