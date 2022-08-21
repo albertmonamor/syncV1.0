@@ -1,3 +1,4 @@
+import os.path
 import sys
 from PyQt5.Qt import *
 from PyQt5.QtWidgets import *
@@ -78,6 +79,10 @@ class SyncUI(QWidget):
         else:
             self.UI['bstart'].setDisabled(False)
             self.UI['bstart'].setText("Start Synchronous")
+            QMessageBox(QMessageBox.Information, "status sync",
+                        f"Synchronous main folder "
+                        f"`{os.path.basename(self.setting['s_path'])}` with `{os.path.basename(self.setting['d_path'])}`"
+                        f"\nfinished successfully!").exec_()
 
 
 # /* run application  */
