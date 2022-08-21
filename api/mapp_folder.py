@@ -1,5 +1,5 @@
 import os
-from api.analyze import chType
+from api.analyze import chType, getSubFolder
 
 
 class MFolders(object):
@@ -35,11 +35,29 @@ class MFolders(object):
                                 "time_ch": os.path.getctime(fPath),
                                 "time_cr": os.path.getmtime(fPath),
                                 "type": chType(fPath),
-                                "sub": fPath[fPath.rfind(os.path.basename(Folder))+len(os.path.basename(Folder))+1:]})
+                                "sub": getSubFolder(Folder, fPath)})
 
             self.lisOfFiles.append({"folder": folder[0], "files": self.li})
 
         return self.lisOfFiles
+
+    @staticmethod
+    def __get_folder_yield(Folder):
+
+        li = []
+        lisOfFiles = []
+        for folder in os.walk(Folder):
+            li = []
+            yield folder[0], folder[1].__len__()+folder[2].__len__()
+            for _file in os.listdir(folder[0]):
+                fPath = fr"{folder[0]}\{_file}"
+                li.append({"name": _file,
+                           "size": os.path.getsize(fPath),
+                           "time_ch": os.path.getctime(fPath),
+                           "time_cr": os.path.getmtime(fPath),
+                           "type": chType(fPath),
+                           "sub": fPath[fPath.rfind(os.path.basename(Folder)) + len(os.path.basename(Folder)) + 1:]})
+            lisOfFiles.append({"folder": folder[0], "files": li})
 
     def getFolders(self, *folders):
         """

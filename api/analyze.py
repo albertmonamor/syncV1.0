@@ -27,3 +27,8 @@ def fixWarpPath(text: str):
         return f"{text[0:8]}..{text[-10:]}"
 
     return text
+
+
+def getSubFolder(s_path, d_path):
+    basename = os.path.basename(s_path)
+    return d_path[d_path.find(basename) + len(basename)+1:]
