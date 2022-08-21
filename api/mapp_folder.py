@@ -56,7 +56,7 @@ class MFolders(object):
                            "time_ch": os.path.getctime(fPath),
                            "time_cr": os.path.getmtime(fPath),
                            "type": chType(fPath),
-                           "sub": fPath[fPath.rfind(os.path.basename(Folder)) + len(os.path.basename(Folder)) + 1:]})
+                           "sub": getSubFolder(Folder, fPath)})
             lisOfFiles.append({"folder": folder[0], "files": li})
 
     def getFolders(self, *folders):

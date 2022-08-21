@@ -30,7 +30,7 @@ class SyncFolders(MFolders):
             indexL = 0
 
         Root = folder[indexR]
-        FolderTS = folder[indexS][0]['folder']
+        FolderTS = folder[indexS][0]['folder'].replace("/", "\\")
         for __ in folder[indexL]:
 
             for _ in Root:
@@ -46,6 +46,7 @@ class SyncFolders(MFolders):
                     else:
                         if os.path.exists(Path) and create['type']:
                             if not create['size'] == os.path.getsize(Path):
+                                print(Path)
                                 os.system(rf"del {Path}")
 
                         if not os.path.exists(Path):
