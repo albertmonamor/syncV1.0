@@ -50,5 +50,3 @@ def idValid(_id: str):
     return size_of_id % 10 == 0
 
 
-print(idValid("324104173"))
-
